@@ -177,6 +177,8 @@ class NdvParser:
         try:
             plan = data.find('div', class_='tile__image')['data-deskstop']
             plan = re.search("url\('(?P<url>\S+)'\)", plan).group('url')
+            if plan == '/img/new-design/no-image.svg':
+                return None
             return plan
         except AttributeError:
             return None
